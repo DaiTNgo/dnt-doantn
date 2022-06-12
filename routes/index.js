@@ -1,7 +1,7 @@
-const solarRoute = require('./solar');
+const powerRoute = require('./power');
 
 function route(app) {
-    app.use('/api', solarRoute);
+  app.use('/api', powerRoute);
 }
 
 module.exports = route;

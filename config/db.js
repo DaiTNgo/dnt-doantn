@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 
-const uri =
-    `mongodb+srv://${process.env.USERNAME_MONGODB}:${process.env.PASSWORD_MONGODB}@doantn.yr4d95f.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://daingo:123123123@doantn.yr4d95f.mongodb.net/?retryWrites=true&w=majority`;
 async function connect() {
-    try {
-        await mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('Connecting successfully');
-    } catch (error) {
-        console.log('Connecting failure');
-        process.exit(1);
-    }
+  try {
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connecting successfully');
+  } catch (error) {
+    console.log('Connecting failure');
+    process.exit(1);
+  }
 }
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -27,5 +26,5 @@ async function connect() {
 //   client.close();
 // });
 module.exports = {
-    connect,
+  connect,
 };
