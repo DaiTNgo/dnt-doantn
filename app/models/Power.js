@@ -11,17 +11,16 @@ const Power = new Schema(
       type: String,
       require: true,
     },
-    firstTime: {
-      type: Date,
-      require: true,
-    },
-    lastTime: {
-      type: Date,
+    totalTime: {
+      type: String,
       require: true,
     },
   },
   {
-    timestamps: false,
+    timestamps: {
+      createdAt: true,
+      updatedAt: false,
+    },
   }
 );
 module.exports = mongoose.model('power', Power);

@@ -1,5 +1,18 @@
 const PowerModel = require('../models/Power');
 class Power {
+  // [POST] /
+  async send(req, res) {
+    try {
+      const { uid, totalTime, amp } = req.body;
+      const power = await PowerModel.create({ uid, totalTime, amp });
+      res.status(201).json({ message: 'success', power: power });
+    } catch (error) {
+      res
+        .status(400)
+        .json({ message: 'Send data fail', error: error.messages });
+    }
+  }
+
   // ------------------------------------
   // [GET] /api/time {dev}
   async receive(req, res) {
@@ -40,20 +53,6 @@ class Power {
     res.json('OK!');
   }
   // ------------------------------------
-
-  // [POST] /
-  async send(req, res) {
-    try {
-      const { volt, amp } = req.body;
-      const newData = new PowerModel({ volt, amp });
-      await newData.save();
-      res.status(201).json({ message: 'success' });
-    } catch (error) {
-      res
-        .status(400)
-        .json({ message: 'Send data fail', error: error.messages });
-    }
-  }
 
   // [POST] /api/date
   async getDate(req, res) {
