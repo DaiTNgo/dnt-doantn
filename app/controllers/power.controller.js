@@ -12,6 +12,16 @@ class Power {
         .json({ message: 'Send data fail', error: error.messages });
     }
   }
+  async deleteAll(req, res) {
+    try {
+      await PowerModel.deleteMany();
+      res.status(201).json({ message: 'success' });
+    } catch (error) {
+      res
+        .status(400)
+        .json({ message: 'Send data fail', error: error.messages });
+    }
+  }
 
   // ------------------------------------
   // [GET] /api/time {dev}
