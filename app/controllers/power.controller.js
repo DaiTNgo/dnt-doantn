@@ -22,6 +22,20 @@ class Power {
         .json({ message: 'Send data fail', error: error.messages });
     }
   }
+  async getAll(req, res) {
+    try {
+      const resp = await PowerModel.find(
+        {
+          amp: { $ne: null },
+        },
+        {},
+        { sort: { createdAt: -1 } }
+      ).lean();
+      res.status(200).json({ resp });
+    } catch (error) {
+      res.status(400).json({ message: 'Get data fail', error: error.message });
+    }
+  }
 
   // ------------------------------------
   // [GET] /api/time {dev}

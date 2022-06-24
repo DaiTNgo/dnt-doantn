@@ -4,8 +4,6 @@ const PowerController = require('../app/controllers/power.controller.js');
 
 router.route('/').post(PowerController.send);
 router.route('/').delete(PowerController.deleteAll);
-router.route('/').get((req, res) => {
-  res.json('Kha la ok do.');
-});
+router.route('/').get(PowerController.getAll);
 
 module.exports = router;
